@@ -1,0 +1,19 @@
+/*
+ * calc.c
+ *
+ *  Created on: Sep 20, 2022
+ *      Author: Omar
+ */
+#include<common_macros.h>
+#include<keypad.h>
+#include<lcd.h>
+#include<micro_config.h>
+#include<std_types.h>
+
+int main(void){
+	LCD_init();
+	LCD_sendCommand(0x01);
+	while (1){
+		LCD_displayString( LCD_intgerToString(KeyPad_getPressedKey()));
+	}
+}

@@ -1,0 +1,40 @@
+08:31:34 **** Incremental Build of configuration Debug for project calculator ****
+make all 
+Building file: ../keypad.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega16 -DF_CPU=1000000UL -MMD -MP -MF"keypad.d" -MT"keypad.o" -c -o "keypad.o" "../keypad.c"
+In file included from ../micro_config.h:22,
+                 from ../keypad.h:17,
+                 from ../keypad.c:13:
+c:/winavr-20100110/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+../keypad.c: In function 'KeyPad_4x4_adjustKeyNumber':
+../keypad.c:153: warning: implicit declaration of function 'itoa'
+Finished building: ../keypad.c
+ 
+Building target: calculator.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,calculator.map -mmcu=atmega16 -o "calculator.elf"  ./calc.o ./keypad.o ./lcd.o   
+Finished building target: calculator.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S calculator.elf  >"calculator.lss"
+Finished building: calculator.lss
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 calculator.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:    9432 bytes (57.6% Full)
+(.text + .data + .bootloader)
+
+Data:         14 bytes (1.4% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+08:31:36 Build Finished. 0 errors, 2 warnings. (took 1s.552ms)
+

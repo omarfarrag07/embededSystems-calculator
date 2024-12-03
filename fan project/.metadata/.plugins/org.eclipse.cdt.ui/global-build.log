@@ -1,0 +1,33 @@
+03:09:01 **** Incremental Build of configuration Debug for project fan ****
+make all 
+Building file: ../fan.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega16 -DF_CPU=1000000UL -MMD -MP -MF"fan.d" -MT"fan.o" -c -o "fan.o" "../fan.c"
+In file included from ../fan.c:9:
+c:/winavr-20100110/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+Finished building: ../fan.c
+ 
+Building target: fan.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,fan.map -mmcu=atmega16 -o "fan.elf"  ./fan.o   
+Finished building target: fan.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S fan.elf  >"fan.lss"
+Finished building: fan.lss
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 fan.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:    4426 bytes (27.0% Full)
+(.text + .data + .bootloader)
+
+Data:         14 bytes (1.4% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 

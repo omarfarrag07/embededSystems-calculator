@@ -1,0 +1,56 @@
+/*
+ * fan.c
+ *
+ *  Created on: Sep 6, 2022
+ *      Author: Omar
+ */
+#include<avr/io.h>
+#include<avr/interrupt.h>
+#include<util/delay.h>
+#define SET_BIT(REG,BIT_NUM) (REG |=(1<<BIT_NUM))
+#define TOGGLE_BIT(REG,BIT_NUM) (REG ^=(1<<BIT_NUM))
+
+unsigned int count=0,check=0;
+ISR(TIMER1_OVF_vect){
+	switch (check){
+	case 1:
+		if(count++==54){
+
+		}
+		break;
+	case 2:
+		if(count++==107){
+
+		}
+		break;
+	case 3:
+		if(count++==161){
+
+
+				}
+		break;
+	}
+	if(count++==54){
+
+	}
+}
+ISR(INT0_vect){
+	TOGGLE_BIT(PORTC,PC1);
+}
+ISR(INT1_vect){
+	if (check++==4)
+			check=0;
+}
+int main(void){
+	SET_BIT(TCCR0,WGM01);SET_BIT(TCCR0,WGM01);SET_BIT(TCCR0,COM01);
+	SET_BIT(TCCR1B,CS12);SET_BIT(TCCR1B,CS10);
+	TCNT1L=0;TCNT1H=0;
+	SET_BIT(TIMSK,TICIE1);
+	SET_BIT(SREG,7);SET_BIT(GICR,INT0); SET_BIT(MCUCR,ISC01);SET_BIT(MCUCR,ISC00);
+	DDRC=0x0F;
+	SET_BIT(PORTD,PD2);
+	while(1){
+
+	}
+}
+
